@@ -1,0 +1,8 @@
+{
+    "baseUrl": "https://www.testingmarathon.com/register",
+    "baseApiUrl": "https://api.omnisend.com/v3",
+    "credentials": {
+        "userName": "",
+        "password": ""
+    }
+}

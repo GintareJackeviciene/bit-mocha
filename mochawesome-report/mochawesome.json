@@ -1,0 +1,419 @@
+{
+  "stats": {
+    "suites": 3,
+    "tests": 6,
+    "passes": 5,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-03-19T07:48:17.752Z",
+    "end": "2024-03-19T07:49:23.717Z",
+    "duration": 65965,
+    "testsRegistered": 9,
+    "passPercent": 55.55555555555556,
+    "pendingPercent": 0,
+    "other": 2,
+    "hasOther": true,
+    "skipped": 3,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "07272729-8bbd-4693-afd3-1a0e8938d22d",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "83b1f2a9-14c7-4773-aaa3-c08f202badc9",
+          "title": "Contacts API tests",
+          "fullFile": "C:\\Users\\HP\\Desktop\\bit-mocha\\test\\contacts.js",
+          "file": "\\test\\contacts.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Contacts API tests\"",
+              "fullTitle": "Contacts API tests \"before each\" hook in \"Contacts API tests\"",
+              "timedOut": false,
+              "duration": 300,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const cont = {\n  firstName: random.getRandomName(),\n  lastName: random.getRandomName(),\n  identifiers: [\n    {\n      type: \"email\",\n      channels: {\n        email: {\n          status: \"subscribed\",\n        },\n      },\n      id: email,\n    },\n  ],\n  customProperties: {\n    string: \"wwwwwwww\",\n    number: 123.12,\n    integer: 1234,\n    boolean: false,\n    array: [\"labai gerai\", \"dar geriau\"],\n  },\n};\nconst response = await contact.create(cont);\ncontactID = response.data.contactID;",
+              "err": {},
+              "uuid": "e3f727b1-3f6c-4b71-b1ab-f7c866f44f10",
+              "parentUUID": "83b1f2a9-14c7-4773-aaa3-c08f202badc9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Contacts API tests\"",
+              "fullTitle": "Contacts API tests \"after each\" hook in \"Contacts API tests\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "6b191da9-8a78-467c-ac14-11a5b3711fd2",
+              "parentUUID": "83b1f2a9-14c7-4773-aaa3-c08f202badc9",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Should able to create contact",
+              "fullTitle": "Contacts API tests Should able to create contact",
+              "timedOut": false,
+              "duration": 416,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const cont = {\n  firstName: \"Firstname\",\n  lastName: \"Lastname\",\n  identifiers: [\n    {\n      type: \"email\",\n      channels: {\n        email: {\n          status: \"subscribed\",\n        },\n      },\n      id: \"dhgfgh@gmail.com\",\n    },\n  ],\n};\nconst response = await contact.create(cont);\n//expect\nexpect(response.data.email).to.be.equal(\"dhgfgh@gmail.com\");\nexpect(response.data).to.have.property(\"contactID\");\nexpect(response.data).to.have.not.property(\"password\");\nexpect(response.data.contactID).to.lengthOf(24);\n//assert\nassert.typeOf(response.data.contactID, \"string\");\nassert.lengthOf(response.data.contactID, 24);\n//should\nresponse.data.contactID.should.be.a(\"string\");",
+              "err": {},
+              "uuid": "d404724c-9130-4557-9a7d-90becbddc7d7",
+              "parentUUID": "83b1f2a9-14c7-4773-aaa3-c08f202badc9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should able to get created contact",
+              "fullTitle": "Contacts API tests Should able to get created contact",
+              "timedOut": false,
+              "duration": 340,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await contact.get(contactID);\n//console.log(JSON.stringify(response.data));\nexpect(response.data.customProperties.number).to.be.equal(123.12);\nexpect(response.data.customProperties.number).to.approximately(124, 0.88);\nexpect(response.data.customProperties.boolean).to.be.a(\"boolean\");\nexpect(response.data.customProperties.array).to.length(2);\nexpect(response.data.customProperties.array).to.contain(\"labai gerai\");\nexpect(response.data.email).to.equal(email);",
+              "err": {},
+              "uuid": "94e963e9-155e-43b5-b687-c8c2e25c39c3",
+              "parentUUID": "83b1f2a9-14c7-4773-aaa3-c08f202badc9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should able to update contact",
+              "fullTitle": "Contacts API tests Should able to update contact",
+              "timedOut": false,
+              "duration": 317,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const cont = {\n  firstName: \"Updated\",\n  lastName: \"Lastname\",\n  identifiers: [\n    {\n      type: \"email\",\n      channels: {\n        email: {\n          status: \"subscribed\",\n        },\n      },\n      id: email,\n    },\n  ],\n};\nconst response = await contact.update(contactID, cont);\nexpect(response.status).to.equal(200);\nexpect(response.data.email).to.equal(email);",
+              "err": {},
+              "uuid": "140b6439-6f01-4bcb-a4da-cd76ca12c260",
+              "parentUUID": "83b1f2a9-14c7-4773-aaa3-c08f202badc9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d404724c-9130-4557-9a7d-90becbddc7d7",
+            "94e963e9-155e-43b5-b687-c8c2e25c39c3",
+            "140b6439-6f01-4bcb-a4da-cd76ca12c260"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1073,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "b68ec2a3-895f-4a0f-b8e0-9e5c532b2f72",
+          "title": "1 should be able to login",
+          "fullFile": "C:\\Users\\HP\\Desktop\\bit-mocha\\test\\login.js",
+          "file": "\\test\\login.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook for \"1 should be able to login\"",
+              "fullTitle": "1 should be able to login \"before each\" hook for \"1 should be able to login\"",
+              "timedOut": true,
+              "duration": 57296,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build()\nvars = {}\nloginPage = new LoginPage(driver)\nloginPage.open()\nawait loginPage.loginWithUser(process.env.EMAIL, process.env.PASSWORD)",
+              "err": {
+                "message": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (C:\\Users\\HP\\Desktop\\bit-mocha\\test\\login.js)",
+                "estack": "Error: Timeout of 30000ms exceeded. For async tests and hooks, ensure \"done()\" is called; if returning a Promise, ensure it resolves. (C:\\Users\\HP\\Desktop\\bit-mocha\\test\\login.js)\n    at listOnTimeout (node:internal/timers:573:17)\n    at process.processTimers (node:internal/timers:514:7)",
+                "diff": null
+              },
+              "uuid": "aba9cc5e-183c-4f25-8d01-83f8e492c9a9",
+              "parentUUID": "b68ec2a3-895f-4a0f-b8e0-9e5c532b2f72",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook for \"1 should be able to login\"",
+              "fullTitle": "1 should be able to login \"after each\" hook for \"1 should be able to login\"",
+              "timedOut": false,
+              "duration": 54,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading 'quit')",
+                "estack": "TypeError: Cannot read properties of undefined (reading 'quit')\n    at Context.<anonymous> (test\\login.js:26:22)\n    at process.processImmediate (node:internal/timers:478:21)",
+                "diff": null
+              },
+              "uuid": "ed90ef50-437f-4e57-97f8-f8bd2d5d6251",
+              "parentUUID": "b68ec2a3-895f-4a0f-b8e0-9e5c532b2f72",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "1 should be able to login",
+              "fullTitle": "1 should be able to login 1 should be able to login",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await loginPage.assertAdministrationPanelTextIsVisible();",
+              "err": {},
+              "uuid": "f6d175e8-52ea-4698-8786-bff8ef8fb05a",
+              "parentUUID": "b68ec2a3-895f-4a0f-b8e0-9e5c532b2f72",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "2 should be able to create issue with name :Gintares bug",
+              "fullTitle": "1 should be able to login 2 should be able to create issue with name :Gintares bug",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const issuePage = new IssuePage(driver);\nawait issuePage.open();\nawait issuePage.pressAddIssueButton();\nawait issuePage.enterIssueName(name);\nawait issuePage.enterIssueDescription(description);\nawait issuePage.pressCreateButton();\nawait issuePage.assertCreatedIssueTitleIsVisible(name);\n\n               //delete created issue\nawait issuePage.pressDeleteIssueButton();\nawait issuePage.pressCreateButton();",
+              "err": {},
+              "uuid": "c0ebcb58-b07d-442c-b2a4-f53e74745146",
+              "parentUUID": "b68ec2a3-895f-4a0f-b8e0-9e5c532b2f72",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "2 should be able to create issue with name :Kitas bug1",
+              "fullTitle": "1 should be able to login 2 should be able to create issue with name :Kitas bug1",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const issuePage = new IssuePage(driver);\nawait issuePage.open();\nawait issuePage.pressAddIssueButton();\nawait issuePage.enterIssueName(name);\nawait issuePage.enterIssueDescription(description);\nawait issuePage.pressCreateButton();\nawait issuePage.assertCreatedIssueTitleIsVisible(name);\n\n               //delete created issue\nawait issuePage.pressDeleteIssueButton();\nawait issuePage.pressCreateButton();",
+              "err": {},
+              "uuid": "f93f9ee2-e676-46ca-ae91-8ac4c8a1b038",
+              "parentUUID": "b68ec2a3-895f-4a0f-b8e0-9e5c532b2f72",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [
+            "f6d175e8-52ea-4698-8786-bff8ef8fb05a",
+            "c0ebcb58-b07d-442c-b2a4-f53e74745146",
+            "f93f9ee2-e676-46ca-ae91-8ac4c8a1b038"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        },
+        {
+          "uuid": "93c7c5f0-8db9-4ff0-bfd1-237908f21452",
+          "title": "Test random helper",
+          "fullFile": "C:\\Users\\HP\\Desktop\\bit-mocha\\test\\unit-test.js",
+          "file": "\\test\\unit-test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Test random helper\"",
+              "fullTitle": "Test random helper \"before each\" hook in \"Test random helper\"",
+              "timedOut": false,
+              "duration": 0,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "ba978818-865b-4f2f-b0cc-264f95a76921",
+              "parentUUID": "93c7c5f0-8db9-4ff0-bfd1-237908f21452",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after each\" hook in \"Test random helper\"",
+              "fullTitle": "Test random helper \"after each\" hook in \"Test random helper\"",
+              "timedOut": false,
+              "duration": 1,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "",
+              "err": {},
+              "uuid": "814e9174-3e6d-434d-8549-a133b6eff4a7",
+              "parentUUID": "93c7c5f0-8db9-4ff0-bfd1-237908f21452",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "getRandomString(5, 'qwertyuiop') should return random string length=5",
+              "fullTitle": "Test random helper getRandomString(5, 'qwertyuiop') should return random string length=5",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = random.getRandomString(5, \"qwertyuiop\");\nexpect(result).to.be.lengthOf(5);",
+              "err": {},
+              "uuid": "27ffa65d-f1be-47d7-a7da-1f89455caee8",
+              "parentUUID": "93c7c5f0-8db9-4ff0-bfd1-237908f21452",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "getRandomString(100, 'qqqqqqqqqqqqqqqqqqqqpqwertyuiopqwertyuiopqwertyuiop') should contains q",
+              "fullTitle": "Test random helper getRandomString(100, 'qqqqqqqqqqqqqqqqqqqqpqwertyuiopqwertyuiopqwertyuiop') should contains q",
+              "timedOut": false,
+              "duration": 2,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const result = random.getRandomString(\n  5,\n  \"qqqqqqqqqqqqqqqqqqqqqqqqqqpqwertyuiopqwertyuiopqwertyuiop\"\n);\nexpect(result).to.be.contain(\"q\");",
+              "err": {
+                "message": "AssertionError: expected 'eortp' to include 'q'",
+                "estack": "AssertionError: expected 'eortp' to include 'q'\n    at Context.<anonymous> (test\\unit-test.js:27:26)",
+                "diff": null
+              },
+              "uuid": "587cc923-8c9f-4201-9893-6f8bcbfb9924",
+              "parentUUID": "93c7c5f0-8db9-4ff0-bfd1-237908f21452",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "getRandomEmail() should return string which contains @",
+              "fullTitle": "Test random helper getRandomEmail() should return string which contains @",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const result = random.getRandomEmail();\nexpect(result).to.be.contain(\"@\");",
+              "err": {},
+              "uuid": "d15826bd-9920-40b6-9831-ec62cb6a0330",
+              "parentUUID": "93c7c5f0-8db9-4ff0-bfd1-237908f21452",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "27ffa65d-f1be-47d7-a7da-1f89455caee8",
+            "d15826bd-9920-40b6-9831-ec62cb6a0330"
+          ],
+          "failures": [
+            "587cc923-8c9f-4201-9893-6f8bcbfb9924"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.3.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
